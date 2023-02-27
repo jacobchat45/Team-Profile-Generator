@@ -49,13 +49,31 @@ inquirer.prompt([
     // const newManager = new Manager(response.id, etc...)
     teamMembers.push(newManager);
     // arrayOfTeamMembers.push(newManager)
-    // promptForNexEmployee ()
+    promptForNextEmployee()
 })
 
 const promptForNextEmployee = () => {
-    inquirer.prompt([{
-        // choice of 3
-    }]).then(response => {
+    inquirer.prompt([
+        {
+            type: "list",
+            name: "option",
+            message: "What would you like to do",
+            choices: ["Engineer", "Intern", "None"]
+        }
+    ]).then(response => {
+        switch(response.option){
+            case "Engineer":
+                promptForEngineer();
+                break;
+            case "Intern":
+                promptForIntern();
+                break;
+            default:
+                buildPage();
+                break;
+            
+            
+        }
         // if engineer
         //    promptForEngineer
         // else if intern
