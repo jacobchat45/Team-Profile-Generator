@@ -117,11 +117,36 @@ const promptForEngineer = () => {
 }
 
 const promptForIntern = () => {
-    inquirer.prompt([{
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "internname",
+            message: "What is the name of your intern?"
+        },
+
+        {
+            type: "input",
+            name: "internid",
+            message: "What is the id of your intern?"
+        },
+        {
+            type: "input",
+            name: "internemail",
+            message: "What is the email of your intern?"
+        },
+        {
+            type: "input",
+            name: "internSchool",
+            message: "What school does your intern go to?"
+        },
         //intern questions
-    }]).then(response => {
+    ]).then(response => {
+        const newIntern = new Intern(response.internname, response.internid, response.internemail, response.internSchool)
         // add new intern to employees array
+        teamMembers.push(newIntern);
+        promptForNextEmployee();
         // promptForNextEmployee
+
     })
 }
 
