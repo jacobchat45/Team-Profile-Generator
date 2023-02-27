@@ -152,4 +152,9 @@ const promptForIntern = () => {
 
 const buildPage = () => {
 // render(myArrayOfTeamMembers)
+// console.log(teamMembers);
+let html = render(teamMembers);
+fs.writeFileSync(outputPath, html);
+console.log(html);
 }
+
