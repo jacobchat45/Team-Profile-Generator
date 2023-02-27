@@ -84,11 +84,35 @@ const promptForNextEmployee = () => {
 }
 
 const promptForEngineer = () => {
-    inquirer.prompt([{
+    inquirer.prompt([
         //engineer questions
-    }]).then(response => {
-        // add new engineer to employees array
-        // promptForNextEmployee
+        {
+            type: "input",
+            name: "engineername",
+            message: "What is the name of your engineer?"
+        },
+
+        {
+            type: "input",
+            name: "engineerid",
+            message: "What is the id of your engineer?"
+        },
+        {
+            type: "input",
+            name: "engineeremail",
+            message: "What is the email of your engineer?"
+        },
+        {
+            type: "input",
+            name: "engineerGithub",
+            message: "What is the github of your engineer?"
+        },
+    ]).then(response => {
+
+     const newEngineer = new Engineer(response.engineername, response.engineerid, response.engineeremail, response.engineerGithub)
+    // const newManager = new Manager(response.id, etc...)
+    teamMembers.push(newEngineer);
+        promptForNextEmployee();
     })
 }
 
